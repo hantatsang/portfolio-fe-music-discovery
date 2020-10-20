@@ -4,9 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { SearchMusicItemPayload } from '../types/SearchMusicItemPayload';
-import Table from './ui/Table';
-import TableCol from './ui/TableCol';
-import TableRow from './ui/TableRow';
 
 library.add(faPlay, faPause);
 
@@ -92,7 +89,7 @@ const CardActionButton = styled.button`
 `;
 
 const FadedLabel = styled.span`
-  color: #7d7d7d;
+  color: #5a5a5a;
   font-weight: bold;
 `;
 
@@ -128,28 +125,8 @@ function MusicSearchResultListItem({
       <CardHeader>
         {result.title_short}
       </CardHeader>
-      <Table>
-        <tbody>
-          <TableRow>
-            <TableCol>
-              <FadedLabel>Album</FadedLabel>
-            </TableCol>
-            <TableCol>
-              {result.album.title}
-            </TableCol>
-          </TableRow>
-          <TableRow>
-            <TableCol>
-              <FadedLabel>Artist</FadedLabel>
-            </TableCol>
-            <TableCol>
-              {result.artist.name}
-            </TableCol>
-          </TableRow>
-        </tbody>
-      </Table>
-      {/* <p><strong>Album</strong>: {result.album.title}</p>
-      <p><strong>Artist</strong>: {result.artist.name}</p> */}
+      <div><FadedLabel>Album:</FadedLabel> {result.album.title}</div>
+      <div><FadedLabel>Artist:</FadedLabel> {result.artist.name}</div>
     </CardContent>
     <CardAction>
       <CardActionButton onClick={() => handleClickPlay(result.preview)}>
