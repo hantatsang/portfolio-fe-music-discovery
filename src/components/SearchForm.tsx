@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { searchMusicActionCreator } from '../redux/deezer/actions';
 import { SearchMusicRequestPayload } from '../types/SearchMusicRequestPayload';
+import TextInput from './ui/TextInput';
 
 function SearchForm() {
-  const [lastQuery, setLastQuery] = useState<string>('Enter artist');
+  const [lastQuery, setLastQuery] = useState<string>('Enter to search songs');
   let inputEl = useRef<HTMLInputElement | null>(null);
   const dispatch = useDispatch();
   const {
@@ -32,19 +33,21 @@ function SearchForm() {
   }, [dispatch]);
 
   const unfocusInput = (): void => {
+    console.log(inputEl)
     inputEl
       && inputEl.current
       && inputEl.current.blur();
   }
 
   const registerInput = (ref: HTMLInputElement | null): void => {
+    inputEl.current = ref;
     register(ref, { required: true })
   }
 
   return <form
     onSubmit={handleSubmit(onSubmit)}
   >
-    <input
+    <TextInput
       autoComplete="off"
       ref={registerInput}
       type="text"
@@ -52,12 +55,6 @@ function SearchForm() {
       id="query"
       placeholder={lastQuery}
     />
-    <button
-      disabled={!formState.isValid}
-      type="submit"
-    >
-      Search
-    </button>
   </form>
 }
 
