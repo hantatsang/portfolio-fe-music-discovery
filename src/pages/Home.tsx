@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 import MusicSearchResult from '../components/MusicSearchResult';
 import SearchForm from '../components/SearchForm';
 import LayoutContainer from '../components/ui/LayoutContainer';
@@ -17,9 +18,7 @@ const Wrapper = styled.div`
 function Home() {
   return <Wrapper>
     <LayoutContainer>
-      <header>
-        <h1>Discover Music</h1>
-      </header>
+      <Header />
       <SearchForm />
       <MusicSearchResult />
     </LayoutContainer>
