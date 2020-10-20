@@ -1,7 +1,7 @@
-import { SearchMusicItemPayload } from "./SearchMusicItemPayload";
+import { SongPayload } from "./SongPayload";
 
 export interface SearchMusicResponsePayload {
-  data: SearchMusicItemPayload[];
+  data: SongPayload[];
   total: string;
   next: string;
 }

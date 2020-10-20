@@ -1,7 +1,7 @@
 import { AlbumPayload } from "./AlbumPayload";
 import { ArtistPayload } from "./ArtistPayload";
 
-export interface SearchMusicItemPayload {
+export interface SongPayload {
   id: number;
   title: string;
   title_short: string;

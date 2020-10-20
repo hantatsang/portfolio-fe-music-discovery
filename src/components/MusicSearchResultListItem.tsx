@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { pauseMusicActionCreator, playMusicActionCreator } from '../redux/player/actions';
 import { RootState } from '../redux/types';
-import { SearchMusicItemPayload } from '../types/SearchMusicItemPayload';
+import { SongPayload } from '../types/SongPayload';
 import ActionButton from './ui/ActionButton';
 
 library.add(faPlay, faPause);
@@ -69,7 +69,7 @@ const CardAction = styled.div`
 `;
 
 type Props = {
-  result: SearchMusicItemPayload,
+  result: SongPayload,
 }
 
 function MusicSearchResultListItem({

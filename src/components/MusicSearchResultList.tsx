@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import { SearchMusicItemPayload } from '../types/SearchMusicItemPayload';
+import { SongPayload } from '../types/SongPayload';
 import MusicSearchResultListItem from './MusicSearchResultListItem';
 
 type Props = {
-  results: SearchMusicItemPayload[],
+  results: SongPayload[],
 }
 
 function MusicSearchResultList({ results }: Props) {

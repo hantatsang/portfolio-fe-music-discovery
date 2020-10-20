@@ -1,14 +1,14 @@
-import { SearchMusicItemPayload } from "../../types/SearchMusicItemPayload";
+import { SongPayload } from "../../types/SongPayload";
 import { PAUSE_MUSIC, PLAY_MUSIC } from "./constants";
 
 export interface PlayerAction {
   type: typeof PLAY_MUSIC | typeof PAUSE_MUSIC;
-  payload: SearchMusicItemPayload;
+  payload: SongPayload;
 }
 
 export interface PlayMusicActionCreator {
   type: typeof PLAY_MUSIC;
-  payload: SearchMusicItemPayload,
+  payload: SongPayload,
 }
 
 export interface PauseMusicActionCreator {
@@ -16,6 +16,6 @@ export interface PauseMusicActionCreator {
 }
 
 export interface PlayerState {
-  song: SearchMusicItemPayload | null;
+  song: SongPayload | null;
   status: 'idle' | 'playing' | 'paused';
 }
