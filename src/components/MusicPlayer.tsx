@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { pauseMusicActionCreator } from '../redux/player/actions';
@@ -41,7 +41,7 @@ const Container = styled.div<ContainerProps>`
 const audio = new Audio();
 
 function MusicPlayer() {
-  const [pauseTimeout, _] = useState<number>();
+  const pauseTimeout = 0;
   const timeoutRef = useRef(pauseTimeout);
   timeoutRef.current = pauseTimeout;
   const playerProps = useSelector((state: RootState) =>
