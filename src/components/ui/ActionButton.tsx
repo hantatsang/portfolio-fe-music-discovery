@@ -7,8 +7,8 @@ const ActionButton = styled.button`
   outline: none;
   background: #ff5242;
   color: #ffffff;
-  width: 60px;
-  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.2s ease-in;
