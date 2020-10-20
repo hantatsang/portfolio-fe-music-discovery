@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { pauseMusicActionCreator } from '../redux/player/actions';
@@ -39,11 +39,9 @@ const Container = styled.div<ContainerProps>`
 `;
 
 const audio = new Audio();
+let pauseTimeout: number = 0;
 
 function MusicPlayer() {
-  const pauseTimeout = 0;
-  const timeoutRef = useRef(pauseTimeout);
-  timeoutRef.current = pauseTimeout;
   const playerProps = useSelector((state: RootState) =>
     state.player
   );
@@ -51,7 +49,9 @@ function MusicPlayer() {
   const { song, status } = playerProps;
 
   useEffect(() => {
-    if (song === null) return;
+    if (song === null) {
+      return () => clearTimeout(pauseTimeout)
+    };
 
     if (status === 'playing') {
       audio.pause();
@@ -63,7 +63,7 @@ function MusicPlayer() {
           audio.pause();
           dispatch(pauseMusicActionCreator());
         }, audio.duration * 1000);
-        timeoutRef.current = timeout;
+        pauseTimeout = timeout;
       }
     } else if (status === 'paused') {
       audio.pause();
@@ -72,7 +72,7 @@ function MusicPlayer() {
     }
 
     return () => clearTimeout(pauseTimeout);
-  }, [dispatch, song, status, pauseTimeout]);
+  }, [dispatch, song, status]);
 
   const handleClickPlay = () => {
     dispatch(pauseMusicActionCreator());
