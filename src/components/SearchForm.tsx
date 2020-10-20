@@ -32,7 +32,6 @@ function SearchForm() {
   }, [dispatch, reset]);
 
   const unfocusInput = (): void => {
-    console.log(inputEl)
     inputEl
       && inputEl.current
       && inputEl.current.blur();

@@ -24,7 +24,7 @@ function MusicSearchResult() {
 
   useEffect(() => {
     dispatch(searchMusicActionCreator({
-      query: 'Australia',
+      query: 'Once upon a time in America',
     }));
   }, [dispatch]);
 

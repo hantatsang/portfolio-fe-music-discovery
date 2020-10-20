@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { SearchMusicItemPayload } from '../types/SearchMusicItemPayload';
 import MusicSearchResultListItem from './MusicSearchResultListItem';
 
@@ -12,7 +12,15 @@ function MusicSearchResultList({ results }: Props) {
   const [playing, setPlaying] = useState<boolean>(false);
   const [currentAudioUrl, setCurrentAudioUrl] = useState<string>('');
 
+  useEffect(() => {
+    return () => {
+      audio.pause()
+    };
+  }, []);
+
   const playPreview = (url: string) => {
+    if (!audio) return;
+
     if (currentAudioUrl === url && playing) {
       audio.pause();
       setPlaying(false);
