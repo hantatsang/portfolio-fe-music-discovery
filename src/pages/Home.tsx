@@ -1,17 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import MusicSearchResult from '../components/MusicSearchResult';
 import SearchForm from '../components/SearchForm';
-
-function getSearchDeezer() {
-  return fetch('https://rapidapi.p.rapidapi.com/search?q=eminem', {
-    headers: {
-      'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
-      'x-rapidapi-key': 'e7a1366ba3msh4cb0f59ac21d295p163f1fjsn437f679b61c5',
-      'useQueryString': 'true',
-    }
-  })
-    .then(res => res.json());
-}
 
 /**
  * Grid layout to make bottom-sticky footer
@@ -24,7 +14,13 @@ const Wrapper = styled.div`
 
 function Home() {
   return <Wrapper>
-    <SearchForm />
+    <header>
+      <h1>Discover Music</h1>
+    </header>
+    <main>
+      <SearchForm />
+      <MusicSearchResult />
+    </main>
   </Wrapper>
 }
 
