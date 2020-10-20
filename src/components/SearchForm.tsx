@@ -10,7 +10,6 @@ function SearchForm() {
   let inputEl = useRef<HTMLInputElement | null>(null);
   const dispatch = useDispatch();
   const {
-    formState,
     handleSubmit,
     register,
     reset
@@ -30,7 +29,7 @@ function SearchForm() {
     setLastQuery(query);
     reset();
     unfocusInput();
-  }, [dispatch]);
+  }, [dispatch, reset]);
 
   const unfocusInput = (): void => {
     console.log(inputEl)

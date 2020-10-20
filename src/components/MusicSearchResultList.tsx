@@ -10,7 +10,6 @@ const audio = new Audio();
 
 function MusicSearchResultList({ results }: Props) {
   const [playing, setPlaying] = useState<boolean>(false);
-  // const [audio, _] = useState<HTMLAudioElement>(new Audio());
   const [currentAudioUrl, setCurrentAudioUrl] = useState<string>('');
 
   const playPreview = (url: string) => {
