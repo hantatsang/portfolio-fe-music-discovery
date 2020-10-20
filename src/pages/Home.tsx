@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Footer from '../components/Footer';
 import MusicSearchResult from '../components/MusicSearchResult';
 import SearchForm from '../components/SearchForm';
+import LayoutContainer from '../components/ui/LayoutContainer';
 
 /**
  * Grid layout to make bottom-sticky footer
@@ -10,18 +11,18 @@ import SearchForm from '../components/SearchForm';
 const Wrapper = styled.div`
   min-height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
 `;
 
 function Home() {
   return <Wrapper>
-    <header>
-      <h1>Discover Music</h1>
-    </header>
-    <main>
+    <LayoutContainer>
+      <header>
+        <h1>Discover Music</h1>
+      </header>
       <SearchForm />
       <MusicSearchResult />
-    </main>
+    </LayoutContainer>
     <Footer />
   </Wrapper>
 }

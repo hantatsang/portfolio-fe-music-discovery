@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { searchMusicActionCreator } from '../redux/deezer/actions';
 import { SearchMusicState } from '../redux/deezer/types';
 import { RootState } from '../redux/types';
 import MusicSearchResultList from './MusicSearchResultList';
+import Grid from './ui/Grid';
+
+const ResultContainer = styled.div`
+  margin-top: 75px;
+`;
 
 function MusicSearchResult() {
   const dispatch = useDispatch();
@@ -22,19 +28,23 @@ function MusicSearchResult() {
   }, [dispatch]);
 
   if (status === 'fetching') {
-    return <div>Loading...</div>
+    return <ResultContainer>Loading...</ResultContainer>
   }
 
   if (status === 'error') {
-    return <div>
+    return <ResultContainer>
       <p>Something went wrong</p>
-    </div>;
+    </ResultContainer>;
   }
 
   if (status === 'fetched' && results) {
-    return <MusicSearchResultList
-      results={results.data}
-    />
+    return <ResultContainer>
+      <Grid>
+        <MusicSearchResultList
+          results={results.data}
+        />
+      </Grid>
+    </ResultContainer>
   }
 
   return null;
