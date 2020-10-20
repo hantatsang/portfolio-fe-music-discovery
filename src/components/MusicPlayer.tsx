@@ -54,7 +54,7 @@ function MusicPlayer() {
     {
       status === 'playing' && song !== null
         ? <Fragment>
-          <span>{song.title} ({song.artist.name})</span>
+          <span>{song.title} <i>({song.artist.name})</i></span>
           <ActionButton onClick={handleClickPlay}>
             <FontAwesomeIcon icon="pause" aria-label="pause" />
           </ActionButton>

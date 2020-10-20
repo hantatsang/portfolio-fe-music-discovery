@@ -70,14 +70,10 @@ const CardAction = styled.div`
 
 type Props = {
   result: SearchMusicItemPayload,
-  playingAudioUrl: string,
-  playPreview: Function,
 }
 
 function MusicSearchResultListItem({
   result,
-  playingAudioUrl,
-  playPreview,
 }: Props) {
   const [playing, setPlaying] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -98,12 +94,6 @@ function MusicSearchResultListItem({
       return;
     }
   }, [props.song, props.status, result.id]);
-
-  useEffect(() => {
-    if (playingAudioUrl !== result.preview) {
-      setPlaying(false);
-    }
-  }, [playingAudioUrl, result.preview]);
 
   const handleClickPlay = (url: string) => {
     !playing
