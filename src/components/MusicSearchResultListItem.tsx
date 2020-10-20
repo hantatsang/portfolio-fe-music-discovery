@@ -2,8 +2,12 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { pauseMusicActionCreator, playMusicActionCreator } from '../redux/player/actions';
+import { RootState } from '../redux/types';
 import { SearchMusicItemPayload } from '../types/SearchMusicItemPayload';
+import ActionButton from './ui/ActionButton';
 
 library.add(faPlay, faPause);
 
@@ -64,35 +68,6 @@ const CardAction = styled.div`
   text-align: right;
 `;
 
-const CardActionButton = styled.button`
-  box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
-  border: none;
-  border-radius: 50%;
-  outline: none;
-  background: #ff5242;
-  color: #ffffff;
-  width: 60px;
-  height: 60px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in;
-
-  &:hover {
-    box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.14);
-    background: #ff3b29;
-  }
-
-  &:active {
-    position: relative;
-    top: 1px;
-  }
-`;
-
-const FadedLabel = styled.span`
-  color: #5a5a5a;
-  font-weight: bold;
-`;
-
 type Props = {
   result: SearchMusicItemPayload,
   playingAudioUrl: string,
@@ -105,6 +80,24 @@ function MusicSearchResultListItem({
   playPreview,
 }: Props) {
   const [playing, setPlaying] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const props = useSelector((state: RootState) =>
+    state.player
+  );
+
+  useEffect(() => {
+    if (props.song === null || props.song.id !== result.id) {
+      setPlaying(false);
+      return;
+    }
+
+    if (props.status === 'playing') {
+      setPlaying(true);
+    } else if (props.status === 'paused') {
+      setPlaying(false);
+      return;
+    }
+  }, [props.song, props.status, result.id]);
 
   useEffect(() => {
     if (playingAudioUrl !== result.preview) {
@@ -113,8 +106,9 @@ function MusicSearchResultListItem({
   }, [playingAudioUrl, result.preview]);
 
   const handleClickPlay = (url: string) => {
-    playPreview(url);
-    setPlaying(!playing);
+    !playing
+      ? dispatch(playMusicActionCreator(result))
+      : dispatch(pauseMusicActionCreator());
   }
 
   return <Card>
@@ -128,12 +122,12 @@ function MusicSearchResultListItem({
       <div><i>- {result.artist.name}</i></div>
     </CardContent>
     <CardAction>
-      <CardActionButton onClick={() => handleClickPlay(result.preview)}>
+      <ActionButton onClick={() => handleClickPlay(result.preview)}>
         {playing
           ? <FontAwesomeIcon icon="pause" aria-label="pause" />
           : <FontAwesomeIcon icon="play" aria-label="play" />
         }
-      </CardActionButton>
+      </ActionButton>
     </CardAction>
   </Card>
 }

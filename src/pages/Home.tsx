@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import MusicPlayer from '../components/MusicPlayer';
 import MusicSearchResult from '../components/MusicSearchResult';
 import SearchForm from '../components/SearchForm';
 import LayoutContainer from '../components/ui/LayoutContainer';
@@ -21,6 +22,7 @@ function Home() {
       <Header />
       <SearchForm />
       <MusicSearchResult />
+      <MusicPlayer />
     </LayoutContainer>
     <Footer />
   </Wrapper>
