@@ -8,7 +8,7 @@ const FooterContainer = styled.footer`
   border-top: 1px solid #dddddd;
   width: 100%;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 100px;
   padding-top: 2rem;
   padding-bottom: 2rem;
 `;
