@@ -17,7 +17,8 @@ const Container = styled.div<ContainerProps>`
   z-index: 9999;
   width: 100%;
   padding: 25px 0;
-  background-color: #ffffff;
+  background-color: #1a1a1a;
+  color: #ffffff;
   box-shadow: 0 -1px 10px 2px rgba(0, 0, 0, 0.25);
   height: 150px;
   font-size: 1.2rem;
@@ -69,7 +70,7 @@ function MusicPlayer() {
     {
       status === 'playing' && song !== null
         ? <Fragment>
-          <span>{song.title} <i>({song.artist.name})</i></span>
+          <span><i>{song.title} - {song.artist.name}</i></span>
           <ActionButton onClick={handleClickPlay}>
             <FontAwesomeIcon icon="pause" aria-label="pause" />
           </ActionButton>
