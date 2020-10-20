@@ -14,7 +14,7 @@ function MusicSearchResultList({ results }: Props) {
 
   useEffect(() => {
     return () => {
-      audio.pause()
+      audio.pause();
     };
   }, []);
 

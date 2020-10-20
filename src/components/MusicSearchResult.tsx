@@ -24,7 +24,7 @@ function MusicSearchResult() {
 
   useEffect(() => {
     dispatch(searchMusicActionCreator({
-      query: 'Once upon a time in America',
+      query: 'Maxence Cyrin',
     }));
   }, [dispatch]);
 

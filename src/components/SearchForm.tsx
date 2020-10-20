@@ -47,6 +47,8 @@ function SearchForm() {
   >
     <TextInput
       autoComplete="off"
+      autoFocus
+      aria-label="Search"
       ref={registerInput}
       type="text"
       name="query"

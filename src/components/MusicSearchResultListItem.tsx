@@ -125,8 +125,7 @@ function MusicSearchResultListItem({
       <CardHeader>
         {result.title_short}
       </CardHeader>
-      <div><FadedLabel>Album:</FadedLabel> {result.album.title}</div>
-      <div><FadedLabel>Artist:</FadedLabel> {result.artist.name}</div>
+      <div><i>- {result.artist.name}</i></div>
     </CardContent>
     <CardAction>
       <CardActionButton onClick={() => handleClickPlay(result.preview)}>
