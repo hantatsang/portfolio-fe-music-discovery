@@ -6,6 +6,7 @@ import { SearchMusicState } from '../redux/deezer/types';
 import { RootState } from '../redux/types';
 import MusicSearchResultList from './MusicSearchResultList';
 import Grid from './ui/Grid';
+import LoadingIcon from './ui/LoadingIcon';
 
 const ResultContainer = styled.div`
   margin-top: 75px;
@@ -28,7 +29,11 @@ function MusicSearchResult() {
   }, [dispatch]);
 
   if (status === 'fetching') {
-    return <ResultContainer>Loading...</ResultContainer>
+    return <ResultContainer>
+      <div style={{ textAlign: "center" }}>
+        <LoadingIcon />
+      </div>
+    </ResultContainer>
   }
 
   if (status === 'error') {
