@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
 import MusicSearchResult from '../components/MusicSearchResult';
 import SearchForm from '../components/SearchForm';
 
@@ -21,6 +22,7 @@ function Home() {
       <SearchForm />
       <MusicSearchResult />
     </main>
+    <Footer />
   </Wrapper>
 }
 

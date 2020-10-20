@@ -1,19 +1,29 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchMusicActionCreator } from '../redux/deezer/actions';
 import { SearchMusicState } from '../redux/deezer/types';
 import { RootState } from '../redux/types';
 import MusicSearchResultList from './MusicSearchResultList';
 
 function MusicSearchResult() {
+  const dispatch = useDispatch();
   const props: SearchMusicState = useSelector(
     (state: RootState) => state.deezer
   );
   const {
-    error,
     results,
     status,
   } = props;
 
+  useEffect(() => {
+    dispatch(searchMusicActionCreator({
+      query: 'Australia',
+    }));
+  }, [dispatch]);
+
+  if (status === 'fetching') {
+    return <div>Loading...</div>
+  }
 
   if (status === 'error') {
     return <div>
