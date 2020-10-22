@@ -29,14 +29,13 @@ jobs:
             ${{ runner.OS }}-
       - name: Install dependencies
         run: yarn --frozen-lockfile
-      # TODO: Uncomment if tests are added
-      # - name: Run tests
-      #   run: yarn test
       - name: Run build
         run: yarn build
         env:
           GENERATE_SOURCEMAP: false
           REACT_APP_RAPID_API_KEY: ${{ secrets.REACT_APP_RAPID_API_KEY }}
+      - name: Run storybook-build
+        run: yarn build-storybook -o ./build/storybook
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
