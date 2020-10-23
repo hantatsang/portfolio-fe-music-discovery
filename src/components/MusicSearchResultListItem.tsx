@@ -54,7 +54,7 @@ function MusicSearchResultListItem({
     </CardContent>
     <CardAction>
       <ActionButton onClick={handleClickPlay}>
-        {props.status === 'playing'
+        {playing
           ? <FontAwesomeIcon icon="pause" aria-label="pause" />
           : <FontAwesomeIcon icon="play" aria-label="play" />
         }
