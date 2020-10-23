@@ -6,6 +6,7 @@ A frontend portfolio project.
 
 - React
 - Redux Saga
+- Storybook
 - Github Actions
 - AWS S3, Cloudfront
 
@@ -24,6 +25,7 @@ Use `.env.example` to create `.env.local` or `.env.production.local` file. The f
 ### Production
 
 `yarn build` to build for production
+`yarn build-storybook` to build storybook
 
 ### CI/CD
 
@@ -34,3 +36,5 @@ Github Actions is set up for branch `release/prod`. It deploys app on AWS S3. Th
 - `AWS_REGION`
 - `AWS_S3_BUCKET_NAME`
 - `REACT_APP_RAPID_API_KEY`
+
+Storybook is deployed to `storybook/` path.
