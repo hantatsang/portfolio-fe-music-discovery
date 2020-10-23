@@ -38,7 +38,7 @@ function MusicSearchResultListItem({
     }
   }, [props.song, props.status, result.id]);
 
-  const handleClickPlay = (url: string) => {
+  const handleClickPlay = () => {
     !playing
       ? dispatch(playMusicActionCreator(result))
       : dispatch(pauseMusicActionCreator());
@@ -53,8 +53,8 @@ function MusicSearchResultListItem({
       <div><i>- {result.artist.name}</i></div>
     </CardContent>
     <CardAction>
-      <ActionButton onClick={() => handleClickPlay(result.preview)}>
-        {playing
+      <ActionButton onClick={handleClickPlay}>
+        {props.status === 'playing'
           ? <FontAwesomeIcon icon="pause" aria-label="pause" />
           : <FontAwesomeIcon icon="play" aria-label="play" />
         }
