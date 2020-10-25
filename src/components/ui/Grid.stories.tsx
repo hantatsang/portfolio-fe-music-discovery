@@ -1,35 +1,25 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta } from '@storybook/react/types-6-0';
 import React from 'react';
-import Grid, { GridProps } from './Grid';
+import Grid from './Grid';
 
 export default {
   title: 'Components/Grid',
   component: Grid
 } as Meta;
 
-const Template: Story<GridProps> = (args) => <Grid {...args}>
+export const _default: React.FC<{}> = () => <Grid>
   {[...Array(10)].map((_, i) => <div
     key={i}
     style={{
       background: '#00bf56',
       color: '#ffffff',
+      width: '100%',
+      height: '150px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      width: '100%',
-      height: '150px',
     }}
   >
-    Example Grid item #{i}
+    Example grid item #{i}
   </div>)}
-</Grid>;
-
-export const OneColumn = Template.bind({});
-OneColumn.args = {
-  col: 1
-};
-
-export const FiveColumns = Template.bind({});
-FiveColumns.args = {
-  col: 5
-}
+</Grid>

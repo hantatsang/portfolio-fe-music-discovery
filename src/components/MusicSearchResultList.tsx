@@ -9,7 +9,7 @@ type Props = {
 
 function MusicSearchResultList({ results }: Props) {
   return <Fragment>
-    <Grid col={3}>
+    <Grid>
       {results.map((result) => <MusicSearchResultListItem
         key={result.id}
         result={result}
