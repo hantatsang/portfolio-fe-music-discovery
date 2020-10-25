@@ -5,7 +5,13 @@ import img from '../assets/michael-48yI_ZyzuLo-unsplash.jpg';
 import Card from './Card';
 export default {
   title: 'Composed Components/Card',
-  component: Card
+  component: Card,
+  subcomponents: {
+    CardAction,
+    CardContent,
+    CardHeader,
+    CardImage,
+  }
 } as Meta;
 
 export const _default: React.FC<{}> = () => <Card>

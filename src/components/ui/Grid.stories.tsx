@@ -1,13 +1,13 @@
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import Grid from './Grid';
+import Grid, { GridProps } from './Grid';
 
 export default {
   title: 'Components/Grid',
   component: Grid
 } as Meta;
 
-export const _default: React.FC<{}> = () => <Grid>
+const Template: Story<GridProps> = (args) => <Grid {...args}>
   {[...Array(10)].map((_, i) => <div
     key={i}
     style={{
@@ -22,4 +22,14 @@ export const _default: React.FC<{}> = () => <Grid>
   >
     Example Grid item #{i}
   </div>)}
-</Grid>
+</Grid>;
+
+export const OneColumn = Template.bind({});
+OneColumn.args = {
+  col: 1
+};
+
+export const FiveColumns = Template.bind({});
+FiveColumns.args = {
+  col: 5
+}
