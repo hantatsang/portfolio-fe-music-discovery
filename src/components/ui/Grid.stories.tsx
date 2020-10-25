@@ -12,9 +12,14 @@ export const _default: React.FC<{}> = () => <Grid>
     key={i}
     style={{
       background: '#00bf56',
+      color: '#ffffff',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       width: '100%',
       height: '150px',
     }}
   >
+    Example Grid item #{i}
   </div>)}
 </Grid>

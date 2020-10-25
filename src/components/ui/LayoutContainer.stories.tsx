@@ -8,7 +8,5 @@ export default {
 } as Meta;
 
 export const _default: React.FC<{}> = () => <LayoutContainer>
-  <p>This component provides page body layout that have <code>max-width</code> for large screen sizes.</p>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod deleniti quam, natus numquam, repellendus saepe tenetur esse adipisci dicta laudantium consequatur iure nulla at iusto facere illum nostrum sequi maxime!</p>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod deleniti quam, natus numquam, repellendus saepe tenetur esse adipisci dicta laudantium consequatur iure nulla at iusto facere illum nostrum sequi maxime!</p>
+  <p>This component provides page body layout that have <code>max-width</code> of <code>1140px</code> for large screen sizes. You can test viewing this on small/medium/large screen sizes to check its responsiveness and behavior on different screen sizes.</p>
 </LayoutContainer>
