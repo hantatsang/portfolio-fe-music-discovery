@@ -5,7 +5,6 @@ import { searchMusicActionCreator } from '../redux/deezer/actions';
 import { SearchMusicState } from '../redux/deezer/types';
 import { RootState } from '../redux/types';
 import MusicSearchResultList from './MusicSearchResultList';
-import Grid from './ui/Grid';
 import LoadingIcon from './ui/LoadingIcon';
 
 const ResultContainer = styled.div`
@@ -44,11 +43,9 @@ function MusicSearchResult() {
 
   if (status === 'fetched' && results) {
     return <ResultContainer>
-      <Grid>
-        <MusicSearchResultList
-          results={results.data}
-        />
-      </Grid>
+      <MusicSearchResultList
+        results={results.data}
+      />
     </ResultContainer>
   }
 

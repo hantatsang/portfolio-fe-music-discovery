@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { SongPayload } from '../types/SongPayload';
 import MusicSearchResultListItem from './MusicSearchResultListItem';
+import Grid from './ui/Grid';
 
 type Props = {
   results: SongPayload[],
@@ -8,10 +9,12 @@ type Props = {
 
 function MusicSearchResultList({ results }: Props) {
   return <Fragment>
-    {results.map((result) => <MusicSearchResultListItem
-      key={result.id}
-      result={result}
-    />)}
+    <Grid col={3}>
+      {results.map((result) => <MusicSearchResultListItem
+        key={result.id}
+        result={result}
+      />)}
+    </Grid>
   </Fragment>
 }
 
