@@ -1,0 +1,1 @@
+export { getDomainParts } from "./getDomainParts";

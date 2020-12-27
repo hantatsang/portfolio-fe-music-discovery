@@ -4,11 +4,15 @@ A frontend portfolio project.
 
 ## Tech Stack
 
-- React
-- Redux Saga
-- Storybook
-- Github Actions
-- AWS S3, Cloudfront
+- Frontend:
+  - React
+  - Redux Saga
+- Documentation:
+  - Storybook
+- CD/CI, cloud:
+  - Github Actions
+  - Pulumi
+  - AWS S3, Cloudfront, Route53
 
 ## How to Run
 
@@ -27,7 +31,28 @@ Use `.env.example` to create `.env.local` or `.env.production.local` file. The f
 `yarn build` to build for production
 `yarn build-storybook` to build storybook
 
-### CI/CD
+## Infrastructure
+
+Open terminal in `infrastructure`, install packages by running `npm ci`
+
+### Setup
+
+- Run `pulumi config set [config-name] [value]` for all configs specified under `template` in `Pulumi.yaml`
+
+You'll need to have a AWS SSL Certificate ARN ready for one of the config.
+
+### Deploy
+
+- Run `pulumi preview` to preview changes
+- Run `pulumi up` to deploy infrastructure
+- Run `pulumi stack output` to see output parameters. Use the `bucketName` output to insert into `AWS_S3_BUCKET_NAME` in the next section below
+
+### Clean Up
+
+- Run `pulumi destroy` to remove all cloud resources.
+- Go to Pulumi app and remove the created stack
+
+## CI/CD
 
 Github Actions is set up for branch `release/prod`. It deploys app on AWS S3. The following secrets need to be created in Github settings for the workflow to work:
 

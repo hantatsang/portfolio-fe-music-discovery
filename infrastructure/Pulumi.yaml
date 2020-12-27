@@ -1,0 +1,14 @@
+name: portfolio-fe-music-discovery
+runtime: nodejs
+description: Music Discovery
+template:
+  config:
+    aws:region:
+      description: AWS region to deploy to
+      default: us-east-1
+    static-website:certificateArn:
+      description: ACM certificate ARN for the target domain; must be in the us-east-1 region. If omitted, a certificate will be created.
+    static-website:envTag:
+      description: The environment tag for current stack (ie. dev, prod, etc.). There's no way to get the current stack name from code so the code will rely on this.
+    static-website:targetDomain:
+      description: The domain to serve the website at (e.g. www.example.com)
